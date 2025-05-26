@@ -5,134 +5,120 @@ import { assets } from "../assets/assets";
 import { ShopContext } from '../context/ShopContext';
 
 const PlaceOrder = () => {
-const [method, setMethod] = useState('cod');
-
-const { navigate } = useContext(ShopContext);
+  const [method, setMethod] = useState('cod');
+  const { navigate } = useContext(ShopContext);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
+    <div className="flex flex-col sm:flex-row justify-between gap-6 pt-5 sm:pt-14 min-h-[80vh] border-t border-sage font-outfit text-charcoal px-4 sm:px-8 md:px-16">
       {/* ---------Left Side----------- */}
-      <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
+      <div className="flex flex-col gap-6 w-full sm:max-w-[480px]">
         <div className="text-xl sm:text-2xl my-3">
           <Title text1={"DELIVERY"} text2={"INFORMATION"} />
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="text"
             placeholder="First Name"
           />
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="text"
             placeholder="Last Name"
           />
         </div>
 
         <input
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
           type="email"
           placeholder="Email Address"
         />
         <input
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
           type="text"
           placeholder="Street"
         />
 
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="text"
             placeholder="City"
           />
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="text"
             placeholder="State"
           />
         </div>
 
-        {/* <div className="flex gap-3">
+        {/* Uncomment if needed */}
+        {/* <div className="flex gap-4">
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="number"
             placeholder="Zipcode"
           />
           <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
             type="text"
             placeholder="Country"
           />
         </div> */}
 
         <input
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-sage rounded py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-forest"
           type="number"
           placeholder="Phone Number"
         />
       </div>
 
-      {/* ----------Rigt Side----------- */}
-      <div className="mt-8">
-        <div className="mt-8 min-w-80">
+      {/* ----------Right Side----------- */}
+      <div className="mt-8 sm:mt-0 w-full sm:max-w-[480px]">
+        <div className="mb-12">
           <CartTotal />
         </div>
 
-        <div className="mt-12">
+        <div>
           <Title text1={"PAYMENT"} text2={"METHOD"} />
 
           {/* ------Payment Method Selection-------- */}
-          <div className="flex gap-3 flex-col lg:flex-row">
-            <div
-              onClick={() => setMethod("stripe")}
-              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
-            >
-              <p
-                className={`min-w-3.5 h-3.5 border rounded-full ${
-                  method === "stripe" ? "bg-green-400" : ""
-                }`}
-              ></p>
-              <img  className='h-10 mx-4' src={assets.stripe_logo} alt="stripe_logo" />
-            </div>
-
-            <div
-              onClick={() => setMethod("razorpay")}
-              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
-            >
-              <p
-                className={`min-w-3.5 h-3.5 border rounded-full ${
-                  method === "razorpay" ? "bg-green-400" : ""
-                }`}
-              ></p>
-              <img className='h-10 mx-4'  src={assets.razorpay_logo} alt="razorpay_logo" />
-            </div>
-
-            <div
-              onClick={() => setMethod("cod")}
-              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
-            >
-              <p
-                className={`min-w-3.5 h-3.5 border rounded-full ${
-                  method === "cod" ? "bg-green-400" : ""
-                }`}
-              ></p>
-              <p className="text-gray-500 text-sm font-medium mx-4">
-                CASH ON DELEVERY
-              </p>
-            </div>
+          <div className="flex flex-col lg:flex-row gap-4 mt-4">
+            {[
+              { id: "stripe", label: null, logo: assets.stripe_logo },
+              { id: "razorpay", label: null, logo: assets.razorpay_logo },
+              { id: "cod", label: "CASH ON DELIVERY", logo: null },
+            ].map(({ id, label, logo }) => (
+              <div
+                key={id}
+                onClick={() => setMethod(id)}
+                className={`flex items-center gap-3 border border-sage p-3 px-4 rounded cursor-pointer transition 
+                  ${method === id ? "ring-2 ring-forest" : "hover:ring-2 hover:ring-mint"}`}
+              >
+                <p
+                  className={`min-w-3.5 h-3.5 border border-sage rounded-full ${
+                    method === id ? "bg-forest" : ""
+                  }`}
+                ></p>
+                {logo ? (
+                  <img className="h-10 mx-4" src={logo} alt={`${id}_logo`} />
+                ) : (
+                  <p className="text-charcoal text-sm font-medium mx-4">{label}</p>
+                )}
+              </div>
+            ))}
           </div>
 
           <div className="w-full text-end mt-8">
             <button
               onClick={() => navigate("/orders")}
-              className="bg-black text-white px-16 py-3 text-sm"
+              className="bg-forest text-softwhite px-16 py-3 text-sm rounded hover:bg-mint hover:text-forest transition"
             >
               PLACE ORDER
             </button>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   );

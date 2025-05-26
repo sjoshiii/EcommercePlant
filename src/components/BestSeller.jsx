@@ -15,9 +15,9 @@ const BestSeller = () => {
 
   return (
     <div className="my-10">
-      <div className="text-center text-3xl py-8">
+      <div className="text-center text-3xl py-8 ">
         <Title text1={"MOST"} text2={"LOVED"} />
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
+        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-charcoal/70 font-outfit">
           Discover our most-loved plants, handpicked for their beauty,
           resilience, and customer favorites. Perfect for any space, indoors or
           out.

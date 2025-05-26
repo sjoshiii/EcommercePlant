@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
-import NewsletterBox from "../components/NewsLetterBox";
+import NewsletterBox from "../components/NewsletterBox";
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -64,48 +64,46 @@ const Contact = () => {
   }, [submitted]);
 
   return (
-    <div>
-      <div className="text-center text-2xl pt-10 border-t">
+    <div className="font-outfit text-charcoal px-4 sm:px-8 md:px-16">
+      {/* Title */}
+      <div className="text-center text-2xl pt-10 border-t border-sage">
         <Title text1={"CONTACT"} text2={"US"} />
       </div>
 
+      {/* Content */}
       <div className="my-10 flex flex-col md:flex-row gap-10 mb-28 justify-center">
         {/* Store Info */}
         <div className="flex flex-col justify-center items-start gap-6 md:w-1/2 px-4">
           {/* Optional Image */}
-          {/* <img className="w-full md:max-w-[480px]" src={assets.contact_img} alt="contact_img" /> */}
+          {/* <img className="w-full md:max-w-[480px] rounded-lg shadow-md" src={assets.contact_img} alt="contact_img" /> */}
 
-          <p className="font-semibold text-xl">Our Garden Store</p>
-          <p className="text-gray-500">
+          <p className="font-semibold text-xl text-forest">Our Garden Store</p>
+          <p className="text-charcoal/70">
             Durbarmarg Road, Green Alley Complex, 13nd Floor <br />
             Kathmandu 44600, Nepal
           </p>
-          <p className="text-gray-500">
+          <p className="text-charcoal/70">
             Tel: +977 9800000000 <br />
             Email: thegreenilyy@gmail.com
           </p>
-          <p className="font-semibold text-xl text-gray-600">
+          <p className="font-semibold text-xl text-forest">
             Careers at The Green Lilyy
           </p>
-          <p className="text-gray-500">
+          <p className="text-charcoal/70">
             Love plants? Join our mission to bring greenery into every home and
             workspace.
           </p>
 
-          <a href="/careers">
-            <button className="border border-black px-8 py-4 rounded text-sm hover:bg-black hover:text-white transition-all duration-500">
+         
+            <button className="border border-forest px-8 py-4 rounded text-sm text-forest hover:bg-forest hover:text-softwhite transition-all duration-500">
               View Open Roles
             </button>
-          </a>
+          
         </div>
 
         {/* Contact Form */}
         <div className="md:w-1/2 px-4">
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            className="flex flex-col gap-4"
-          >
+          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
             <div className="flex gap-4">
               <div className="flex-1">
                 <label className="block mb-1 font-medium" htmlFor="firstName">
@@ -119,13 +117,11 @@ const Contact = () => {
                   value={form.firstName}
                   onChange={handleChange}
                   className={`w-full border rounded px-3 py-2 ${
-                    errors.firstName ? "border-red-500" : "border-gray-300"
-                  }`}
+                    errors.firstName ? "border-red-500" : "border-sage"
+                  } focus:outline-none focus:ring-2 focus:ring-forest`}
                 />
                 {errors.firstName && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.firstName}
-                  </p>
+                  <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
                 )}
               </div>
 
@@ -141,8 +137,8 @@ const Contact = () => {
                   value={form.lastName}
                   onChange={handleChange}
                   className={`w-full border rounded px-3 py-2 ${
-                    errors.lastName ? "border-red-500" : "border-gray-300"
-                  }`}
+                    errors.lastName ? "border-red-500" : "border-sage"
+                  } focus:outline-none focus:ring-2 focus:ring-forest`}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -162,8 +158,8 @@ const Contact = () => {
                 value={form.email}
                 onChange={handleChange}
                 className={`w-full border rounded px-3 py-2 ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                }`}
+                  errors.email ? "border-red-500" : "border-sage"
+                } focus:outline-none focus:ring-2 focus:ring-forest`}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -182,8 +178,8 @@ const Contact = () => {
                 value={form.phone}
                 onChange={handleChange}
                 className={`w-full border rounded px-3 py-2 ${
-                  errors.phone ? "border-red-500" : "border-gray-300"
-                }`}
+                  errors.phone ? "border-red-500" : "border-sage"
+                } focus:outline-none focus:ring-2 focus:ring-forest`}
               />
               {errors.phone && (
                 <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -202,8 +198,8 @@ const Contact = () => {
                 value={form.message}
                 onChange={handleChange}
                 className={`w-full border rounded px-3 py-2 resize-none ${
-                  errors.message ? "border-red-500" : "border-gray-300"
-                }`}
+                  errors.message ? "border-red-500" : "border-sage"
+                } focus:outline-none focus:ring-2 focus:ring-forest`}
               />
               {errors.message && (
                 <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -212,7 +208,7 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="bg-black text-white py-3 rounded active:bg-gray-700 hover:bg-[rgb(198,196,196)] hover:text-black hover:border hover:border-black transition"
+              className="bg-forest text-softwhite py-3 rounded active:bg-mint hover:bg-mint hover:text-forest hover:border hover:border-forest transition"
             >
               Send Message
             </button>

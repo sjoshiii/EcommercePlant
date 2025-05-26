@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import logo from "../assets/logo.png";
 import { assets } from "../assets/assets";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount, navigate } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const navigate = useNavigate();
 
   // When search icon clicked, open search bar and navigate to /collection if not already there
   const handleSearchClick = () => {
@@ -16,33 +17,57 @@ const Navbar = () => {
     }
   };
 
+  // Common classes for nav links
+  const baseLinkClasses = "flex flex-col items-center gap-1 px-2 py-1 rounded transition-colors";
+  const activeLinkClasses = "text-mint font-semibold border-b-2 border-mint";
+  const inactiveLinkClasses = "text-charcoal hover:text-mint";
+
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center justify-between py-5 font-outfit bg-beige px-4 sm:px-8 ">
       <Link to="/">
         <img src={logo} className="w-36" alt="logo" />
       </Link>
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
-        <NavLink to="/" className="flex flex-col items-center gap-1">
+
+      {/* Desktop menu */}
+      <ul className="hidden sm:flex gap-8 text-sm">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`
+          }
+        >
           <p>HOME</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
 
-        <NavLink to="/collection" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/collection"
+          className={({ isActive }) =>
+            `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`
+          }
+        >
           <p>COLLECTION</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
 
-        <NavLink to="/about" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`
+          }
+        >
           <p>ABOUT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
 
-        <NavLink to="/contact" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            `${baseLinkClasses} ${isActive ? activeLinkClasses : inactiveLinkClasses}`
+          }
+        >
           <p>CONTACT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
       </ul>
 
+      {/* Icons and mobile menu */}
       <div className="flex items-center gap-6">
         <img
           onClick={handleSearchClick}
@@ -52,7 +77,7 @@ const Navbar = () => {
         />
 
         <div className="group relative">
-          <Link to="/Login">
+          <Link to="/login">
             <img
               src={assets.profile_icon}
               className="w-5 cursor-pointer"
@@ -60,28 +85,28 @@ const Navbar = () => {
             />
           </Link>
 
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 border bg">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5  text-gray-500 rounded">
-              <p className="cursor-pointer hover:text-black">My Profile</p>
-              <p className="cursor-pointer hover:text-black">Order</p>
-              <p className="cursor-pointer hover:text-black">Logout</p>
+          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 border bg-white shadow-md rounded">
+            <div className="flex flex-col gap-2 w-36 py-3 px-5 text-charcoal rounded">
+              <p className="cursor-pointer hover:text-forest">My Profile</p>
+              <p className="cursor-pointer hover:text-forest">Order</p>
+              <p className="cursor-pointer hover:text-forest">Logout</p>
             </div>
           </div>
         </div>
 
-        {/* cart icon */}
+        {/* Cart icon */}
         <Link to="/cart" className="relative">
           <img
             src={assets.cart_icon}
             className="w-5 min-w-5"
             alt="cart_icon"
           />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-forest text-softwhite aspect-square rounded-full text-[8px] font-semibold">
             {getCartCount()}
           </p>
         </Link>
 
-        {/* mobile responsive menu icon */}
+        {/* Mobile menu icon */}
         <img
           onClick={() => setVisible(true)}
           src={assets.menu_icon}
@@ -90,35 +115,67 @@ const Navbar = () => {
         />
       </div>
 
-      {/* sidebar menu for small screen */}
+      {/* Sidebar menu for small screen */}
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
-          visible ? "w-full" : "w-0"
+        className={`fixed top-0 right-0 bottom-0 bg-softwhite shadow-lg transition-all overflow-hidden z-50 ${
+          visible ? "w-64" : "w-0"
         }`}
       >
-        <div className="flex flex-col text-gray-600">
+        <div className="flex flex-col text-charcoal h-full">
           <div
             onClick={() => setVisible(false)}
-            className="flex items-center gap-4 p-3 cursor-pointer"
+            className="flex items-center gap-4 p-4 cursor-pointer border-b border-gray-200"
           >
             <img
               className="h-4 rotate-180"
               src={assets.dropdown_icon}
               alt="close_icon"
             />
-            <p>Back</p>
+            <p className="font-semibold">Back</p>
           </div>
 
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/">
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/"
+            className={({ isActive }) =>
+              `py-3 px-6 border-b border-gray-200 ${
+                isActive ? "bg-mint text-forest font-semibold" : "hover:bg-beige"
+              }`
+            }
+          >
             Home
           </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/collection">
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/collection"
+            className={({ isActive }) =>
+              `py-3 px-6 border-b border-gray-200 ${
+                isActive ? "bg-mint text-forest font-semibold" : "hover:bg-beige"
+              }`
+            }
+          >
             Collection
           </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/about">
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/about"
+            className={({ isActive }) =>
+              `py-3 px-6 border-b border-gray-200 ${
+                isActive ? "bg-mint text-forest font-semibold" : "hover:bg-beige"
+              }`
+            }
+          >
             About
           </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/contact">
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/contact"
+            className={({ isActive }) =>
+              `py-3 px-6 border-b border-gray-200 ${
+                isActive ? "bg-mint text-forest font-semibold" : "hover:bg-beige"
+              }`
+            }
+          >
             Contact
           </NavLink>
         </div>

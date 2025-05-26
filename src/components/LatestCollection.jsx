@@ -16,7 +16,7 @@ const LatestCollection = () => {
       <div className="text-center py-8 text-3xl">
         <Title text1={"LATEST"} text2={"LEAVES"} />
 
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
+        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-charcoal/70 font-outfit">
           Discover our freshest greenery – handpicked houseplants and garden
           favorites to breathe new life into your space. Curated with care,
           delivered with love.
