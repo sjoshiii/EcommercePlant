@@ -1,55 +1,44 @@
 import { useContext } from "react";
-import { ShopContext } from './../context/ShopContext';
-import Title from './../components/Title';
+import { ShopContext } from "../context/ShopContext";
+import Title from "../components/Title";
 
 const Orders = () => {
-  const { products, currency } = useContext(ShopContext);
+  const { orders, products, currency } = useContext(ShopContext);
 
   return (
     <div className="border-t border-sage pt-16 font-outfit text-charcoal px-4 sm:px-8 md:px-16">
       <div className="text-2xl mb-6">
-        <Title text1={'MY'} text2={'ORDERS'} />
+        <Title text1={"MY"} text2={"ORDERS"} />
       </div>
 
-      <div>
-        {products.slice(1, 4).map((item, index) => (
-          <div
-            key={index}
-            className="py-4 border-b border-sage text-charcoal flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-          >
-            <div className="flex items-start text-sm sm:text-base gap-6">
-              <img
-                className="w-16 sm:w-20 rounded-md shadow-sm"
-                src={item.image[0]}
-                alt={`${item.name} image`}
-              />
-
-              <div>
-                <p className="font-medium">{item.name}</p>
-                <div className="flex items-center gap-4 mt-2 text-base text-charcoal">
-                  <p className="text-lg font-semibold">{currency}{item.price}</p>
-                  <p>Quantity: 1</p>
-                  <p>Pot Size: M</p>
+      {orders.length === 0 ? (
+        <p className="text-center text-charcoal/70 py-20">You have no orders yet.</p>
+      ) : (
+        orders.map((item, index) => {
+          const product = products.find(p => p._id === item._id);
+          if (!product) return null;
+          return (
+            <div key={index} className="py-4 border-b border-sage flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div className="flex gap-4">
+                <img className="w-16 sm:w-20 rounded-md shadow-sm" src={product.image[0]} alt={product.name} />
+                <div>
+                  <p className="font-medium">{product.name}</p>
+                  <div className="flex gap-4 text-sm mt-1">
+                    <p>{currency}{product.price}</p>
+                    <p>Qty: {item.quantity}</p>
+                    <p>Size: {item.size}</p>
+                  </div>
+                  <p className="text-gray-500 text-sm mt-1">Date: {item.date}</p>
                 </div>
-
-                <p className="mt-2 text-charcoal/70">
-                  Date: <span className="text-charcoal/50">21-Apr-2025</span>
-                </p>
               </div>
-            </div>
 
-            <div className="md:w-1/2 flex justify-between items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-3 h-3 rounded-full bg-forest"></span>
-                <p className="text-sm md:text-base font-medium text-forest">Ready to ship</p>
-              </div>
-              <button className="border border-forest px-4 py-2 text-sm font-medium rounded-sm text-forest hover:bg-forest hover:text-softwhite transition">
+              <button className="border border-forest px-4 py-2 text-sm text-forest rounded hover:bg-forest hover:text-white transition">
                 Track Order
               </button>
             </div>
-          </div>
-        ))}
-      </div>
+          );
+        })
+      )}
     </div>
   );
 };

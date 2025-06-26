@@ -23,7 +23,7 @@ const Cart = () => {
     }
     setCartData(tempData);
   }, [cartItems]);
-
+ 
   return (
     <div className="border-t border-sage pt-14 font-outfit text-charcoal px-4 sm:px-8 md:px-16">
       <div className="text-2xl mb-6">

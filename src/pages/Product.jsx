@@ -88,18 +88,19 @@ const Product = () => {
           </div>
 
           <button
-            onClick={() => addToCart(productData._id, size)}
-            disabled={!size}
-            className={`px-8 py-3 text-sm rounded transition
-              ${
-                size
-                  ? "bg-forest text-softwhite hover:bg-mint hover:text-forest hover:border hover:border-forest"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
-              }
-            `}
-          >
-            ADD TO CART
-          </button>
+  onClick={() => addToCart(productData._id, size)}
+  disabled={!size}
+  className={`px-8 py-3 text-sm rounded transition duration-100 ease-in-out
+    ${
+      size
+        ? "bg-forest text-softwhite hover:bg-mint hover:text-forest hover:border hover:border-forest active:scale-95 focus:ring-2 focus:ring-mint"
+        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+    }
+  `}
+>
+  ADD TO CART
+</button>
+
 
           <hr className="mt-10 mb-8 sm:w-4/5 border-sage" />
 
