@@ -79,15 +79,15 @@ const Contact = () => {
 
           <p className="font-semibold text-xl text-forest">Our Garden Store</p>
           <p className="text-charcoal/70">
-            Durbarmarg Road, Green Alley Complex, 13nd Floor <br />
+            Durbarmarg Road, Green Alley Complex, 13th Floor <br />
             Kathmandu 44600, Nepal
           </p>
           <p className="text-charcoal/70">
             Tel: +977 9800000000 <br />
-            Email: thegreenilyy@gmail.com
+            Email: botanepal@gmail.com
           </p>
           <p className="font-semibold text-xl text-forest">
-            Careers at The Green Lilyy
+            Careers at Botanepal
           </p>
           <p className="text-charcoal/70">
             Love plants? Join our mission to bring greenery into every home and

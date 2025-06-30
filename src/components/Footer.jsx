@@ -5,9 +5,9 @@ const Footer = () => {
     <div className="bg-beige text-charcoal font-outfit">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-10 text-sm">
         <div>
-          <p className="text-xl font-semibold mb-5 text-forest">THE GREEN LILYY</p>
+          <p className="text-xl font-semibold mb-5 text-forest">Botanepal</p>
           <p className="w-full md:w-2/3 text-charcoal/70">
-            At THE GREEN LILYY, we’re rooted in the love for nature — delivering beautiful, healthy plants and sustainable greenery to your doorstep.
+            At Botanepal, we’re rooted in the love for nature — delivering beautiful, healthy plants and sustainable greenery to your doorstep.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
           <p className="text-xl font-semibold mb-5 text-forest">GET IN TOUCH</p>
           <ul className="flex flex-col gap-1 text-charcoal/70">
             <li>+977 9800000000</li>
-            <li>thegreenlilyy@gmail.com</li>
+            <li>botanepal@gmail.com</li>
           </ul>
         </div>
       </div>
@@ -33,7 +33,7 @@ const Footer = () => {
       <div>
         <hr className="border-charcoal/20" />
         <p className="py-5 text-sm text-center text-charcoal/60">
-          &copy; 2025 THE GREEN LILYY. All Rights Reserved
+          &copy; 2025 Botanepal. All Rights Reserved
         </p>
       </div>
     </div>

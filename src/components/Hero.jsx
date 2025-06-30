@@ -13,7 +13,7 @@ const Hero = () => {
           </div>
 
           <h1 className="prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed text-charcoal">
-            Green Picks of the Week
+            Flora of the Week
           </h1>
 
           <div className="flex items-center gap-2 mt-4">

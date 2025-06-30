@@ -49,7 +49,7 @@ This project is ideal for learning React component architecture, state managemen
 
 1. **Clone the repository**
 
-git clone https://github.com/yourusername/your-repo-name.git
+git clone https://github.com/sjoshiii/EcommerecPlant.git
 cd your-repo-name
 
 2. **Install dependencies**

@@ -13,7 +13,7 @@ const About = () => {
 
       {/* About content */}
       <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-charcoal/70 font-outfit">
-        At The Green Lilyy, we believe that plants bring life, calm, and beauty
+        At Botanepal, we believe that plants bring life, calm, and beauty
         to every space. Our mission is to connect people with nature through a
         curated selection of indoor and outdoor plants, accessories, and expert
         care advice.<br />
